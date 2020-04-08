@@ -9,7 +9,7 @@ $(document).ready(function () {
     url: "https://v1.hitokoto.cn/?c=d",
     dataType: "jsonp",
     success: function (json) {
-      console.log(json);
+      // console.log(json);
       $(".banner-left > p").text(json.hitokoto);
     },
     error: function (e) {
@@ -50,15 +50,6 @@ $(document).ready(function () {
     speed: 400,
   });
 
-  // $(document).ready(function() {
-  //   if ($(".menu-has-children ul>li a").hasClass("menu-active")) {
-  //     $(".menu-active")
-  //       .closest("ul")
-  //       .parentsUntil("a")
-  //       .addClass("parent-active");
-  //   }
-  // });
-
   //------- Header Scroll Class  js --------//
 
   $(window).scroll(function () {
@@ -76,6 +67,19 @@ $(document).ready(function () {
       time: 1000,
     });
   }
+
+  //------- Lazy load js --------//
+
+  $("img[data-src]").each(function (index, element) {
+    var that = $(this);
+    var imageData = that.attr("data-src");
+    console.log(imageData);
+    $(this).ready(function () {
+      that.attr("src", imageData);
+      that.removeAttr("data-src");
+      console.log("success");
+    });
+  });
 
   //------- Lightbox  js --------//
 
