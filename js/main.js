@@ -73,9 +73,9 @@ $(document).ready(function () {
   $("img[data-src]").each(function (index, element) {
     var that = $(this);
     var imageData = that.attr("data-src");
+    that.attr("src", imageData);
     console.log(imageData);
     $(this).ready(function () {
-      that.attr("src", imageData);
       that.removeAttr("data-src");
       console.log("success");
     });
